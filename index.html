@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text editor</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/alphardex/aqua.css@master/dist/aqua.min.css'>
+    <!-- font -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <!-- bootstarp -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+    <!-- for emoji -->
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
+    <link rel='stylesheet' href='https://onesignal.github.io/emoji-picker/lib/css/emoji.css'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="emoji.css">
+    <link rel="stylesheet" href="form.css">
+    <style>
+        /* 
+        @import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+        body {
+            background: #030321;
+            font-family: Arial;
+        }
+
+        svg {
+            display: block;
+            font: 7.5em 'Montserrat';
+            width: 1500px;
+            height: 200px;
+            margin: 0 auto;
+        }
+
+        .text-copy {
+            fill: none;
+            stroke: white;
+            stroke-dasharray: 6% 29%;
+            stroke-width: 5px;
+            stroke-dashoffset: 0%;
+            animation: stroke-offset 5.5s infinite linear;
+        }
+
+        .text-copy:nth-child(1) {
+            stroke: #4D163D;
+            animation-delay: -1;
+        }
+
+        .text-copy:nth-child(2) {
+            stroke: #840037;
+            animation-delay: -2s;
+        }
+
+        .text-copy:nth-child(3) {
+            stroke: #BD0034;
+            animation-delay: -3s;
+        }
+
+        .text-copy:nth-child(4) {
+            stroke: #BD0034;
+            animation-delay: -4s;
+        }
+
+        .text-copy:nth-child(5) {
+            stroke: #FDB731;
+            animation-delay: -5s;
+        }
+
+        @keyframes stroke-offset {
+            100% {
+                stroke-dashoffset: -35%;
+            }
+        } */
+
+        /* forms css */
+    </style>
+</head>
+
+<body>
+    <div class="go">
+        <h1 class="po">TEXT EDITOR</h1>
+    </div>
+    <!-- <svg viewBox="0 0 960 300">
+        <symbol id="s-text">
+            <text text-anchor="middle" x="50%" y="80%">Text Editor</text>
+        </symbol>
+
+        <g class="g-ants">
+            <use xlink:href="#s-text" class="text-copy"></use>
+            <use xlink:href="#s-text" class="text-copy"></use>
+            <use xlink:href="#s-text" class="text-copy"></use>
+            <use xlink:href="#s-text" class="text-copy"></use>
+            <use xlink:href="#s-text" class="text-copy"></use>
+        </g>
+    </svg> -->
+
+    <!-- nav bar start -->
+    <!--  -->
+    <div class="wrap">
+        <!-- bootsrap navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button> -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                File
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-file-alt"></i>New
+                                        document</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-trash-restore"></i>Resore last
+                                        draft</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-eye"></i>Preview</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-file-export"></i>Export</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-print"></i>Print</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Edit
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#Undo"><i class="fas fa-undo"></i>Undo</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-redo"></i>Redo</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-cut"></i> Cut</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-copy"></i>Copy</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-paste"></i> Paste</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-clipboard"> Peaste As
+                                            text</i></a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-ballot-check"></i>Select all</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-search"></i>Find and replace</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                View
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-code"></i>Source code</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Visual aids</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-puzzle-piece"></i>Show invisible
+                                        charecters</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-th"></i>Show blocks</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-spell-check"></i>Spellcheck</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-kiss-beam"></i>Preview</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-expand-arrows-alt"></i>Full
+                                        screen</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Insert
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-images"></i>Image</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-link"></i>Link</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-photo-video"></i> Media</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-anchor"></i>Insert iframe</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#"><i class="fal fa-shield-cross"></i>Insert
+                                        template</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-brackets-curly"></i>Code
+                                        Sample</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fal fa-table"></i>Table</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-search"></i>Special Charecter</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-icons"></i>Emoji</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-horizontal-rule"></i>Horizontal
+                                        line</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-page-break"></i>Page Break</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-wave-square"></i>Nonbreaking
+                                        space</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-unlink"></i>Anchor</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-receipt"></i>Table of
+                                        contents</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-clock"></i>Date & Time</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Format
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#"><i class="fa fa-bold"></i>Bold</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fa fa-italic"></i>Italic</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fa fa-underline"></i>Underline</a></li>
+                                <li><a class="dropdown-item" href="#"><i
+                                            class="fas fa-strikethrough"></i>Strikethrough</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-superscript"></i>Superscript</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-subscript"></i>Subscript</a>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-brackets-curly"></i>Code</a>
+                                </li>
+                                <!-- <li>
+                                    <hr class="dropdown-divider">
+                                </li> -->
+
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        Format &raquo;
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-submenu">
+                                        <li>
+                                            <a class="dropdown-item" href="#">Headings &raquo; </a>
+                                            <ul class="dropdown-menu dropdown-submenu">
+                                                <li>
+                                                    <a class="dropdown-item" href="#">
+                                                        <h1>Heading 1</h1>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">
+                                                        <h2>Heading2</h2>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">
+                                                        <h3>Heading3</h3>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">
+                                                        <h4>Heading4</h4>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">
+                                                        <h5>Heading5</h5>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">
+                                                        <h6>Heading6</h6>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">Inline &raquo; </a>
+                                            <ul class="dropdown-menu dropdown-submenu">
+                                                <li>
+                                                    <a class="dropdown-item" href="#"><b>Bold</b></a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#"><i>Italic</i></a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#"><u>Underline</u></a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#"><strike>Strikethrough</strike></a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#"><sup>Superscript</sup></a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#"><sub>Subscript</sub></a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#"><code>Code</code></a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">Blocks &raquo; </a>
+                                            <ul class="dropdown-menu dropdown-submenu">
+                                                <li>
+                                                    <a class="dropdown-item" href="#">
+                                                        <p>Paragraph</p>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">
+                                                        <blockquote>Blockquote</blockquote>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">
+                                                        <div>Div</div>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">
+                                                        <pre>Pre</pre></a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"> Align &raquo; </a>
+                                            <ul class="dropdown-menu dropdown-submenu">
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Left</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Center</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Right</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Justifi</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.comment</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.prolog</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.doctype</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.cdata</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.punctuation</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">namespace</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.property</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.tag</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.boolean</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.number</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.constant</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.symbol</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.deleted</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.selector</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.attr-name</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.string</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.char</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.builtin</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.inserted</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.operator</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.entity</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.uri</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.atruie</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.keyword</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.function</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.class-name</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.regex</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.important</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">token.variable</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"><b>token.bold</b></a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i>token.italic</i></a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">tox-xursor-format-painter</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">tiny-pageembed</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">tox-rtc-user-selection</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">tox-rtc-user-coursor</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">tox-rtc-remote-image</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <!-- blocks -->
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        Blocks &raquo;
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-submenu">
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <p>Paragraph</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <h1>Heading 1</h1>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <h2>Heading2</h2>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <h3>Heading3</h3>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <h4>Heading4</h4>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <h5>Heading5</h5>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <h6>Heading6</h6>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <pre>Performatted</pre></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- fonts -->
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        Fonts &raquo;
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-submenu">
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <arial>Arial</arial>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">Arial Black</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">Book Antiqua</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">Comic Sans MS</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">Courier New</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">Georgia</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">HElvetica</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">Imapct</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">Tahoma</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">Terminal</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">Times New Roman</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">Verdana</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">Webdings</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">Wingdings</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- font size -->
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        Font Size &raquo;
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-submenu">
+                                        <li>
+                                            <a class="dropdown-item" href="#">8pt</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">10pt</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">12pt</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">14pt</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">18pt</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">24pt</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">36pt</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- Align -->
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        Align &raquo;
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-submenu">
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i class="fas fa-align-left"></i>Left</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i
+                                                    class="fal fa-align-center"></i>Center</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i
+                                                    class="fas fa-align-right"></i>Right</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i
+                                                    class="fas fa-align-right"></i>Justifi</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- lign Height -->
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        Lign Height &raquo;
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-submenu">
+                                        <li>
+                                            <a class="dropdown-item" href="#">1</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">1.1</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">1.2</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">1.3</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">1.4</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">1.5</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">2</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#"><i class="fa fa-font" data-toggle="tooltip"
+                                            data-placement="top" title="text color" style="color:rgb(0, 0, 0);"></i>Text
+                                        Color
+                                        <input type="color" onchange="execVal('foreColor',this.value)" /></a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fa fa-font" data-toggle="tooltip"
+                                            data-placement="top" title="text color"
+                                            style="background-color: rgb(62, 255, 14);"></i>Bckground Color
+                                        <input type="color" onchange="execVal('foreColor',this.value)" /></a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        Language &raquo;
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-submenu">
+                                        <li>
+                                            <a class="dropdown-item" href="#">English</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">Spanish</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">French</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">German</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">Portuguse</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">Chinese</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-remove-format"></i>Clear
+                                        formatting</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Tools
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-spell-check"></i>Spell Check</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#">Spellcheck Language</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-male"></i></i>Accessibility
+                                        Checker</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-brackets-curly"></i>Source
+                                        Code</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-closed-captioning"></i>Word
+                                        Count</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- for table -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Table
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        Table &raquo;
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-submenu">
+                                        <li>
+                                            <a class="dropdown-item" href="#">Submenu item 3 &raquo; </a>
+                                            <ul class="dropdown-menu dropdown-submenu">
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Multi level 1</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Multi level 2</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">Submenu item 4</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        Cell &raquo;
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-submenu">
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i class="fas fa-border-top"></i>cell
+                                                properties</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i class="fad fa-border-inner"></i>Marge
+                                                cell </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i
+                                                    class="fas fa-border-style-alt"></i>Split cell </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        Row &raquo;
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-submenu">
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i
+                                                    class="fad fa-arrow-square-right"></i>insert column before</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i
+                                                    class="fas fa-arrow-square-left"></i>insert column after</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i class="fas fa-expand-arrows"></i>
+                                                Delete column</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i class="fas fa-cart-arrow-down"></i>Raw
+                                                Propertice</a>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i class="fas fa-cut"></i>Cut column</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i class="fas fa-copy"></i>copy column</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i class="fas fa-paste"></i>Paste column
+                                                before</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i class="far fa-paste"></i>paste column
+                                                after</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        Colume &raquo;
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-submenu">
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i
+                                                    class="fad fa-arrow-square-right"></i>insert column before</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i
+                                                    class="fas fa-arrow-square-left"></i>insert column after</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i class="fas fa-expand-arrows"></i>
+                                                Delete column</a>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i class="fas fa-cut"></i>Cut column</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i class="fas fa-copy"></i>copy column</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i class="fas fa-paste"></i>Paste column
+                                                before</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"><i class="far fa-paste"></i>paste column
+                                                after</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        Sort &raquo;
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-submenu">
+                                        <li>
+                                            <a class="dropdown-item" href="#">Sort table by colume ascending</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">Sort table by column descending</a>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">Advance Sort</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Table Propertice</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-minus-octagon"></i>Delete
+                                        Table</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Help
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-question-circle"></i>
+                                        Help Ali+0</a></li>
+                            </ul>
+                        </li>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- end bootstarp nav bar -->
+        <div class="toolbar">
+            <button id="Undo" title="Undo (Ctrl+U)"><i class="fas fa-undo"></i></button>
+            <button id="Redo" title="Redo (Ctrl+R)"><i class="fas fa-redo"></i></button>
+            <button id="bold" title="Bold (Ctrl+B)"><i class="fa fa-bold"></i></button>
+            <button id="italic" title="Italic (Ctrl+I)"><i class="fa fa-italic"></i></button>
+            <button id="italic" title="cross (Ctrl+Q)"><i class="fas fa-strikethrough"></i></button>
+            <button id="underline" title="Underline (Ctrl+U)"><i class="fa fa-underline"></i></button>
+            <select name="fonts" id="fonts">
+                <option value="Andale Mono" selected>Andale Mono</option>
+                <option value="Arial">Arial</option>
+                <option value="Arial Black">Arial Black</option>
+                <option value="Book Antiqua">Book Antiqua</option>
+                <option value="Comic Sans MS">Comic Sans MS</option>
+                <option value="Courier New">Courier New</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Helvetica">HElvetica</option>
+                <option value="Impact">Imapct</option>
+                <option value="Tahoma">Tahoma</option>
+                <option value="Terminal">Terminal</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Verdana">Verdana</option>
+                <option value="Webdings">Webdings</option>
+                <option value="Wingdings">Wingdings</option>
+            </select>
+            <select name="size" id="size">
+                <option value="8">8</option>
+                <option value="10">10</option>
+                <option value="12">12</option>
+                <option value="14">14</option>
+                <option value="16" selected>16</option>
+                <option value="18">18</option>
+                <option value="20">20</option>
+                <option value="22">22</option>
+                <option value="24">24</option>
+                <option value="26">26</option>
+            </select>
+            <select name="Heading" id="Heading">
+                <option value="Paragraph" selected><i class="fab fa-pied-piper-pp">Paragraph</i></option>
+                <option value="Heading1"><i class="fas fa-h1"></i>Heading 1</option>
+                <option value="Heading2">Heading2</option>
+                <option value="Heading3">Heading3</option>
+                <option value="Heading4">Heading4</option>
+                <option value="Heading5">Heading5</option>
+                <option value="Heading6">Heading6</option>
+                <option value="Performatted">Performatted</option>
+            </select>
+
+            <button id="align-left" title="Left"><i class="fa fa-align-left"></i></button>
+            <button id="align-center" title="Center"><i class="fa fa-align-center"></i></button>
+            <button id="align-right" title="Right"><i class="fa fa-align-right"></i></button>
+            <button style="margin-left:-18px ;margin-right: 12px;" id="align-justifi" title="justifi"><i
+                    class="fas fa-align-justify"></i></button>
+            <!-- <button id="list-ol" title="Ordered List"><i class="fa fa-list-ol"></i></button> -->
+            <button title="ordered-list" style="font-size: 18px;padding: 2px;margin-bottom: 7px;" id="btnGroupDrop1"
+                type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i
+                    class="fad fa-list-ol"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <li><button id="btna" class="btna"><i class="fad fa-list-ol"></i></button>Numarecal</li>
+                <li><button id="btnb" class="btb"><i class="fa fa-list-ol"></i></button>Lower Alpha</li>
+                <li><button id="btnc" class="btnc"><i class="fa fa-list-ol"></i></button>Upper Alpha</li>
+                <li><button id="btnd" class="btnd"><i class="fa fa-list-ol"></i></button>Lower Greek</li>
+                <li><button id="btne" class="btne"><i class="fa fa-list-ol"></i></button>Lower Roman</li>
+                <li><button id="btnf" class="btnf"><i class="fa fa-list-ol"></i></button>Upper Roman</li>
+            </ul>
+            <!--  -->
+            <!--  -->
+            <!-- <button id="list-ul" title="Unordered List"><i class="fa fa-list-ul"></i></button> -->
+
+            <button title="unordered-list" style="font-size: 18px;padding: 2px;margin-bottom: 7px;" id="btnGroupDrop2"
+                type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i
+                    class="fa fa-list-ul"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="btnGroupDrop2">
+                <li><button id="btn1" class="btn1"><i class="fas fa-list-ul"></i></button>Solid Circle</li>
+                <li><button id="btn2" class="btn2"><i class="far fa-list-alt"></i></button>circle</li>
+                <li><button id="btn3" class="btn3"><i class="fas fa-th-list"></i></button>Squre</li>
+            </ul>
+
+
+            <button id="align-check" title="checklist"><i class="fas fa-tasks"></i></button>
+
+
+            <button id="font-color" class="fore-wrapper"><i class='fa fa-font' data-toggle="tooltip"
+                    data-placement="top" title="text color" style='color:rgb(0, 0, 0);'></i>
+                <div class="fore-palette">
+                    <input type="color" onchange="execVal('foreColor',this.value)" />
+            </button>
+            <button id="backgrpond color" class="fore-wrapper"><i class='fa fa-font' data-toggle="tooltip"
+                    data-placement="top" title="text color" style='background-color: rgb(62, 255, 14);'></i>
+                <div class="fore-palette">
+                    <input type="color" onchange="execVal('foreColor',this.value)" />
+            </button>
+
+            <!-- <button class="back-wrapper"><i class='fa fa-font' data-toggle="tooltip" data-placement="top"
+                    title="Background color" style='background:rgb(255, 3, 3);'></i></button>
+                <div class="back-palette"> -->
+
+            <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;" title="text-transform"
+                id="font-trans" type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false"><i class="fas fa-font-case"></i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="btnGroupDrop2">
+                <li><button id="btnt1" class="btnt1"><i class="fas fa-font"></i></button>Uppercase</li>
+                <li><button id="btnt2" class="btnt2"><i class="fas fa-font-case"></i></button>Lowercase</li>
+                <li><button id="btnt3" class="btnt3"><i class="fas fa-text-size"></i></i></button>Tittle case</li>
+            </ul>
+
+
+
+            <button id="permanent-pen" title="Permanent Pen"><i class="fas fa-pen-nib"></i></button>
+            <!-- <hr> -->
+            <br>
+            <button id="format-painter" title="format-painter"><i class="fas fa-paint-roller"></i></button>
+            <button id="clear-formatting" title="clear-formatting"><i class="fas fa-subscript"></i></button>
+            <button id="page-break" title="page-break"><i class="fas fa-page-break"></i></button>
+            <button id="full-screen" title="full-screen"><i class="fas fa-expand-arrows-alt"></i></button>
+            <button id="preview" title="preview"><i class="far fa-eye"></i></button>
+            <button id="save" title="save"><i class="fas fa-download"></i></button>
+            <button id="print" title="print"><i class="fas fa-print"></i></button>
+            <!--  -->
+            <!--  -->
+            <!-- 1 -->
+            <!-- insert Section -->
+            <!-- Button trigger modal -->
+
+            <button title="insert-file" id="insert-file"
+                style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;" type="button"
+                class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="fas fa-file-upload"></i>
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Insert A File</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form accept="">
+                            <div class="modal-body">
+                                <input type="file" id="file" name="file" accept="file/*">
+                            </div>
+                            <div class="modal-footer">
+                                <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                    type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i
+                                        class="fas fa-times"></i></button>
+                                <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                    type="submit" class="btn btn-light" value="submit"><i
+                                        class="fas fa-upload"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2 -->
+
+
+            <button title="insert-image" style="font-size: 18px;padding: 2px;margin-bottom: 7px;" type="button"
+                class="btn btn-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <i class="fas fa-images"></i>
+            </button>
+
+
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">chosse your image</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <label style="margin-left: 50px;">General</label>
+                            <button style="font-size: 18px;padding: 2px;margin-bottom: 7px;" type="button"
+                                class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModala"
+                                data-bs-whatever="@mdo"><i class="fas fa-clinic-medical"></i></button>
+
+                            <label style="margin-left: 160px;">Upload</label>
+                            <button style="font-size: 18px;padding: 2px;margin-bottom: 7px;" type="button"
+                                class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModalb"
+                                data-bs-whatever="@fat"><i class="fas fa-upload"></i></button>
+
+                        </div>
+                        <div class="modal-footer">
+
+                            <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i
+                                    class="fas fa-times"></i></button>
+
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- model for general -->
+
+            <div class="modal fade" id="exampleModala" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="border-radius: 12px;">
+                        <div class="modal-header">
+                            <!-- <h5 class="modal-title" id="exampleModalLabel">New message</h5> -->
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="login-form">
+                                <h1 style="text-align: center;">Source For The Image</h1>
+                                <div class="form-input-material">
+                                    <!-- <label>Source</label> -->
+
+                                    <h3>Sourec:</h3>
+                                    <input type="url" id="url" accept="url/*"><button
+                                        style="margin-left: 12px;background-color: white;" type="button" value=""><i
+                                            class="fas fa-upload"></i></button>
+
+
+
+                                    <!-- <label>Image List</label> -->
+                                    <h4>Image List:</h4>
+                                    <select>
+                                        <option>None</option>
+                                        <option>My Page 1</option>
+                                        <option>My Page 2</option>
+                                    </select>
+                                    <!-- <label>Alternative Description</label> -->
+                                    <h5> Alternative Description:</h5>
+                                    <input type="text" name="description">
+
+                                    <!-- <label>Width</label> -->
+                                    <h5>Width:</h5>
+                                    <input type="number">
+
+                                    <!-- <label>Height</label> -->
+                                    <h5>Height:</h5>
+                                    <input type="number">
+                                    <!-- <label>Class</label> -->
+                                    <h5>Class:</h5>
+                                    <select>
+                                        <option>None</option>
+                                        <option>Some Class</option>
+                                    </select>
+                                </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i
+                                    class="fas fa-times"></i></button>
+                            <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                type="submit" class="btn btn-light" value="submit"><i
+                                    class="fas fa-upload"></i></button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- model for upload image source-->
+            <div class="modal fade" id="exampleModalb" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form>
+                            <div class="modal-body">
+                                <input type="file" id="fileupload" name="image" accept="image/*">
+
+                            </div>
+                            <div class="modal-footer">
+                                <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                    type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i
+                                        class="fas fa-times"></i></button>
+                                <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                    type="submit" class="btn btn-light" value="submit"><i
+                                        class="fas fa-upload"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- 3 -->
+            <button title="insert-video" id="insert-image" style="font-size: 18px;padding: 2px;margin-bottom: 7px;"
+                type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#examleModal">
+                <i class="fas fa-file-video"></i>
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="examleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <label style="margin-left: 10px;">General</label>
+                            <button style="font-size: 18px;padding: 2px;margin-bottom: 7px;" type="button"
+                                class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModala1"
+                                data-bs-whatever="@mdo"><i class="fas fa-clinic-medical"></i></button>
+
+                            <label style="margin-left: 70px;">Embed</label>
+                            <button style="font-size: 18px;padding: 2px;margin-bottom: 7px;" type="button"
+                                class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModalb1"
+                                data-bs-whatever="@fat"><i class="fas fa-anchor"></i></button>
+                            <label style="margin-left: 100px;">Advanced</label>
+                            <button style="font-size: 18px;padding: 2px;margin-bottom: 7px;" type="button"
+                                class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModalc1"
+                                data-bs-whatever="@fat"><i class="fas fa-trash-restore-alt"></i></button>
+                        </div>
+                        <div class="modal-footer">
+                            <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i
+                                    class="fas fa-times"></i></button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- model for video general -->
+            <div class="modal fade" id="exampleModala1" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="border-radius: 12px;">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form class="login-form">
+                            <div class="modal-body">
+                                <h1>General</h1>
+                                <div class="form-input-material">
+                                    <div class="mb-3">
+
+                                        <h4>Source:</h4>
+                                        <input type="url"><button style="margin-left: 12px;background-color: white;"
+                                            type="button" value=""><i class="fas fa-upload"></i></button>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h4>Height</h4>
+                                        <input type="number">
+                                    </div>
+                                    <div class="mb-3">
+                                        <h4>Weadth</h4>
+                                        <input type="number">
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                    type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i
+                                        class="fas fa-times"></i></button>
+                                <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                    type="submit" class="btn btn-light" value="submit"><i
+                                        class="fas fa-upload"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- model for video embded -->
+            <div class="modal fade" id="exampleModalb1" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="border-radius: 12px;">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel" style="color: #000000;text-align: center;">
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form class="login-form">
+                            <div class="modal-body">
+                                <h1>Embeded</h1>
+                                <div class="form-input-material">
+                                    <div class="mb-3">
+
+                                        <h4>Peaste Your Embeded code here</h4>
+                                        <textarea style="height: auto;width: 450px;"></textarea>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                    type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i
+                                        class="fas fa-times"></i></button>
+                                <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                    type="submit" class="btn btn-light" value="submit"><i
+                                        class="fas fa-upload"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- model for vido advance -->
+            <div class="modal fade" id="exampleModalc1" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="border-radius: 12px;">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form class="login-form">
+                            <div class="modal-body">
+                                <h1>General</h1>
+                                <div class="form-input-material">
+                                    <div class="mb-3">
+
+                                        <h4>Alternative Source Url:</h4>
+                                        <input type="url"><button style="margin-left: 12px;background-color: white;"
+                                            type="button" value=""><i class="fas fa-upload"></i></button>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h4>Media Poster (Image Url):</h4>
+                                        <input type="url"><button style="margin-left: 12px;background-color: white;"
+                                            type="button" value=""><i class="fas fa-upload"></i></button>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                    type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i
+                                        class="fas fa-times"></i></button>
+                                <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                    type="submit" class="btn btn-light" value="submit"><i
+                                        class="fas fa-upload"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- 4 -->
+            <button title="embaded-frame" id="embaded-frame" style="font-size: 18px;padding: 2px;margin-bottom: 7px;"
+                type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#examplodal">
+                <i class="fas fa-anchor"></i>
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="examplodal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <label style="margin-left: 50px;">General</label>
+                            <button style="font-size: 18px;padding: 2px;margin-bottom: 7px;" type="button"
+                                class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModald1"
+                                data-bs-whatever="@mdo"><i class="fas fa-clinic-medical"></i></button>
+                            <label style="margin-left: 170px;">Advanced</label>
+                            <button style="font-size: 18px;padding: 2px;margin-bottom: 7px;" type="button"
+                                class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModale1"
+                                data-bs-whatever="@fat"><i class="fas fa-trash-restore-alt"></i></button>
+                        </div>
+                        <div class="modal-footer">
+                            <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i
+                                    class="fas fa-times"></i></button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- model for emdaded frame general -->
+            <div class="modal fade" id="exampleModald1" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="border-radius: 12px;">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form class="login-form">
+                            <div class="modal-body">
+                                <h1>General</h1>
+                                <div class="form-input-material">
+                                    <div class="mb-3">
+
+                                        <h4>Source:</h4>
+                                        <input type="url"><button style="margin-left: 12px;background-color: white;"
+                                            type="button" value=""><i class="fas fa-upload"></i></button>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h4>Size:</h4>
+                                        <select>
+                                            <option selected>Inline Value</option>
+                                            <option>Responsive-21x9</option>
+                                            <option>Responsive-16x9</option>
+                                            <option>Responsive-4x3</option>
+                                            <option>Responsive-1x1</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h4>Height</h4>
+                                        <input type="number">
+                                    </div>
+                                    <div class="mb-3">
+                                        <h4>Weadth</h4>
+                                        <input type="number">
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                    type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i
+                                        class="fas fa-times"></i></button>
+                                <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                    type="submit" class="btn btn-light" value="submit"><i
+                                        class="fas fa-upload"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- model for embeded iframe advanced -->
+            <div class="modal fade" id="exampleModale1" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="border-radius: 12px;">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form class="login-form">
+                            <div class="modal-body">
+                                <h1>General</h1>
+                                <div class="form-input-material">
+                                    <div class="mb-3">
+                                        <h4>Name:</h4>
+                                        <input type="text">
+                                    </div>
+                                    <div class="mb-3">
+                                        <h4>Title</h4>
+                                        <input type="text">
+                                    </div>
+                                    <div class="mb-3">
+
+                                        <h4>Long description URL</h4>
+                                        <input type="url"><button style="margin-left: 12px;background-color: white;"
+                                            type="button" value=""><i class="fas fa-upload"></i></button>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h4>Border:</h4>
+                                        <input type="checkbox" checked>
+                                        <h4>Show iframe border</h4>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h4>Scrollbar:</h4>
+                                        <input type="checkbox">
+                                        <h4>Enabel scrollbar</h4>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <h4>Size:</h4>
+                                        <select>
+                                            <option selected>Inline Value</option>
+                                            <option>Responsive-21x9</option>
+                                            <option>Responsive-16x9</option>
+                                            <option>Responsive-4x3</option>
+                                            <option>Responsive-1x1</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h4>Height</h4>
+                                        <input type="number">
+                                    </div>
+                                    <div class="mb-3">
+                                        <h4>Weadth</h4>
+                                        <input type="number">
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                    type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i
+                                        class="fas fa-times"></i></button>
+                                <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                    type="submit" class="btn btn-light" value="submit"><i
+                                        class="fas fa-upload"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- 2nd stage -->
+            <!-- 1 -->
+            <button title="insert-link" id="embaded-frame"
+                style="font-size: 18px;padding: 2px;margin-bottom: 7px;margin-left: 12px;" type="button"
+                class="btn btn-light" data-bs-toggle="modal" data-bs-target="#examplodalf1">
+                <i class="fas fa-link"></i>
+            </button>
+
+            <div class="modal fade" id="examplodalf1" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="border-radius: 12px;">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form class="login-form">
+                            <div class="modal-body">
+                                <h1>Insert/Edit Link</h1>
+                                <div class="form-input-material">
+                                    <div class="mb-3">
+
+                                        <h4>URL</h4>
+                                        <input type="url"><button style="margin-left: 12px;background-color: white;"
+                                            type="button" value=""><i class="fas fa-upload"></i></button>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h4>Text to display:</h4>
+                                        <input type="text">
+                                    </div>
+                                    <div class="mb-3">
+                                        <h4>Title</h4>
+                                        <input type="text">
+                                    </div>
+                                    <div class="mb-3">
+                                        <h4>Open link in.....</h4>
+                                        <select>
+                                            <option selected>Current Window</option>
+                                            <option>New Window</option>
+
+
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h4>Link list:</h4>
+                                        <select>
+                                            <option selected>None</option>
+                                            <option>My Page 1</option>
+                                            <option>My Page 2</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                    type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i
+                                        class="fas fa-times"></i></button>
+                                <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                    type="submit" class="btn btn-light" value="submit"><i
+                                        class="fas fa-upload"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- 2 -->
+            <button title="insert code" style="font-size: 18px;padding: 2px;margin-bottom: 7px;" type="button"
+                class="btn btn-light" data-bs-toggle="modal" data-bs-target="#xampleModal" data-bs-whatever="@mdo"><i
+                    class="fas fa-brackets-curly"></i></button>
+
+            <div class="modal fade" id="xampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">insert your code here</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form class="login-form">
+                            <div class="modal-body">
+                                <h1></h1>
+                                <div class="form-input-material">
+                                    <div class="mb-3">
+                                        <select id="" class="">
+                                            <option value="HTMl" selected>HTML</option>
+                                            <option value="Java Script">Java Script</option>
+                                            <option value="CSS">CSS</option>
+                                            <option value="PHP">PHP</option>
+                                            <option value="Ruby">Ruby</option>
+                                            <option value="Python">Python</option>
+                                            <option value="Java">Java</option>
+                                            <option value="C">c</option>
+                                            <option value="C++">C++</option>
+                                            <option value="C#">c#</option>
+                                        </select>
+
+                                    </div>
+                                    <div class="mb-3">
+                                        <h4>Peaste Your Code Here</h4>
+                                        <textarea style="height: 400px;width: 400px;" class="form-control"
+                                            id="message-text"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                    type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i
+                                        class="fas fa-times"></i></button>
+                                <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                    type="submit" class="btn btn-light" value="submit"><i
+                                        class="fas fa-upload"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- emoji button -->
+            <button style="font-size: 18px;padding: 2px;margin-bottom: 7px;" type="button" class="btn btn-light"
+                data-bs-toggle="modal" data-bs-target="#exampleMo" data-bs-whatever="@getbootstrap"><i
+                    class="fas fa-meh-rolling-eyes"></i></button>
+
+            <div class="modal fade" id="exampleMo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Choose Your Emoji</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form class="emo">
+                            <div class="modal-body">
+                                <div class="container full-width">
+                                    <div class="row justify-content-center">
+                                        <p class="lead emoji-picker-container">
+                                            <textarea type="textbox" data-emoji-input="unicode" class="form-control"
+                                                placeholder="Input field" data-emojiable="true"></textarea>
+
+                                            <!-- <button type="button" data-emoji-input="unicode" class="form-control"
+                                            placeholder="Input field" data-emojiable="true"></button> -->
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                    type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i
+                                        class="fas fa-times"></i></button>
+                                <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                    type="submit" class="btn btn-light" value="submit"><i
+                                        class="fas fa-upload"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- anchor tag -->
+            <button title="Anchor" style="font-size: 18px;padding: 2px;margin-bottom: 7px;" type="button"
+                class="btn btn-light" data-bs-toggle="modal" data-bs-target="#e1xampleModal">
+                <i class="fas fa-unlink"></i>
+            </button>
+            <div class="modal fade" id="e1xampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form class="login-form">
+                            <div class="modal-body">
+                                <h1>Anchor</h1>
+                                <div class="form-input-material">
+                                    <h4>ID</h4>
+                                    <input type="text" placeholder="example">
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                    type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i
+                                        class="fas fa-times"></i></button>
+                                <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                    type="submit" class="btn btn-light" value="submit"><i
+                                        class="fas fa-upload"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!--Accessibibility Checker  -->
+            <button style="font-size: 18px;padding: 2px;margin-bottom: 7px;margin-left: 12px;" type="button"
+                class="btn btn-light" data-bs-toggle="modal" data-bs-target="#e2xampleModal">
+                <i class="fas fa-male"></i>
+            </button>
+            <div class="modal fade" id="e2xampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button> -->
+                            <!-- <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i
+                                    class="fas fa-times"></i></button> -->
+                            <button style="font-size: 18px;padding: 2px;margin-left: 12px;margin-bottom: 7px;"
+                                type="submit" class="btn btn-light" value="submit"><i
+                                    class="fas fa-thumbs-up"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button title=" left to right" id="rok"><i class="fas fa-paragraph-rtl"></i></button>
+            <button title=" right to left" id="ro"><i class="fas fa-paragraph-rtl"></i></button>
+
+            <button title="export pdf" id="rou"><i class="fas fa-file-export"></i></button>
+
+
+
+        </div>
+        <div class="editor" contenteditable>
+            <h5 style="text-align: center; font-size:20px ;">hi! This text editor is made by Sagnik Sahoo.Type here what
+                ever you want<i class="fas fa-surprise"></i></h5>
+        </div>
+    </div>
+
+    </div>
+    <footer>
+        <div>
+            <h3
+                style="font-family: Roboto,sa; font-size:medium;text-align: center; margin-top: 12px;color: #ffffff;border:aqua;">
+                copyright@ by
+                sagnik sahoo</h3>
+        </div>
+    </footer>
+
+
+    <!-- emoji -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://onesignal.github.io/emoji-picker/lib/js/config.js'></script>
+    <script src='https://onesignal.github.io/emoji-picker/lib/js/util.js'></script>
+    <script src='https://onesignal.github.io/emoji-picker/lib/js/jquery.emojiarea.js'></script>
+    <script src='https://onesignal.github.io/emoji-picker/lib/js/emoji-picker.js'>
+    </script>
+    <script>
+        $(function () {
+            // Initializes and creates emoji set from sprite sheet
+            window.emojiPicker = new EmojiPicker({
+                emojiable_selector: '[data-emojiable=true]',
+                assetsPath: 'http://onesignal.github.io/emoji-picker/lib/img/',
+                popupButtonClasses: 'fa fa-smile-o'
+            });
+            window.emojiPicker.discover();
+        });
+    </script>
+
+</body>
+
+</html>
