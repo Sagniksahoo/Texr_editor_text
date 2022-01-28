@@ -12,7 +12,7 @@ body {
     text-align: center;
     color: rgb(0, 0, 0);
     font-size: large;
-    font-family: Rubik Beastly, sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-style: inherit;
     margin-bottom: -2%;
 
@@ -27,7 +27,7 @@ body {
     width: 70%;
     min-width: 562px;
     margin: 60px auto 0;
-    background: #ffffff;
+    background: #ebfd44d7;
     border-radius: 8px;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .4);
     padding: 10px;
@@ -284,7 +284,7 @@ select>option {
     padding: 50px 40px;
     color: rgb(0, 0, 0);
     font-family: 'Roboto',sans-serif;
-    background: rgba(165, 164, 164, 0.8);
+    background: rgba(255, 255, 255, 0.8);
     border-radius: 20px;
     box-shadow: 0 0.4px 0.4px rgba(128, 128, 128, 0.109), 0 1px 1px rgba(128, 128, 128, 0.155), 0 2.1px 2.1px rgba(128, 128, 128, 0.195), 0 4.4px 4.4px rgba(128, 128, 128, 0.241), 0 12px 12px rgba(128, 128, 128, 0.35);
 }
