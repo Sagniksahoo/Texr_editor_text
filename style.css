@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Beastly&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&family=Open+Sans:wght@600&display=swap');
 
 body {
     background: rgb(138, 134, 134);
@@ -11,8 +12,9 @@ body {
 .go {
     text-align: center;
     color: rgb(0, 0, 0);
-    font-size: large;
-    font-family: 'Roboto', sans-serif;
+    font-size:xx-large;
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Mochiy Pop P One', sans-serif;
     font-style: inherit;
     margin-bottom: -2%;
 
@@ -27,7 +29,7 @@ body {
     width: 70%;
     min-width: 562px;
     margin: 60px auto 0;
-    background: #ebfd44d7;
+    background: #bebebef1;
     border-radius: 8px;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .4);
     padding: 10px;
@@ -77,7 +79,7 @@ select {
     font-size: 15px;
     font-weight: bold;
     color: rgb(0, 0, 0);
-    background: #ec9d7e;
+    background: #979797;
     border: 1px solid #a6a6a6;
     border-radius: 3px;
     margin: 0;
@@ -88,7 +90,7 @@ select {
 
 select>option {
     font-size: 15px;
-    background: #a7f146;
+    background: #7a7a7a;
 }
 
 #fonts {
@@ -128,7 +130,7 @@ select>option {
     height: 60vh;
     margin: 0 auto;
     padding: 20px;
-    background: #fcfcfc;
+    background: #ffffff;
     border-radius: 3px;
     box-shadow: inset 0 0 8px 1px rgba(0, 0, 0, .2);
     box-sizing: border-box;
@@ -152,7 +154,7 @@ select>option {
 .fore-wrapper {
     border: 1px solid #ddd;
     background: rgb(255, 255, 255);
-    font-family: 'Roboto',sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: rgb(0, 0, 0);
     padding: 5px;
     margin: 2px 5px;
@@ -181,12 +183,12 @@ select>option {
 }
 
 .fore-wrapper:hover .fore-palette {
-    display:contents;
+    display: contents;
 }
 
 .fore-wrapper .fore-palette {
     position: relative;
-    display:contents;
+    display: contents;
     cursor: auto;
     display: block;
     left: 0;
@@ -283,7 +285,7 @@ select>option {
     align-items: center;
     padding: 50px 40px;
     color: rgb(0, 0, 0);
-    font-family: 'Roboto',sans-serif;
+    font-family: 'Roboto', sans-serif;
     background: rgba(255, 255, 255, 0.8);
     border-radius: 20px;
     box-shadow: 0 0.4px 0.4px rgba(128, 128, 128, 0.109), 0 1px 1px rgba(128, 128, 128, 0.155), 0 2.1px 2.1px rgba(128, 128, 128, 0.195), 0 4.4px 4.4px rgba(128, 128, 128, 0.241), 0 12px 12px rgba(128, 128, 128, 0.35);
@@ -309,65 +311,71 @@ input[type=file]::file-selector-button {
     border-radius: .2em;
     background-color: #a29bfe;
     transition: 1s;
-  }
-  
-  input[type=file]::file-selector-button:hover {
+}
+
+input[type=file]::file-selector-button:hover {
     background-color: #81ecec;
     border: 2px solid #00cec9;
-  }
+}
 
-  /* for emoji css */
-  .full-width {
+/* for emoji css */
+.full-width {
     width: 100%;
     height: 10vh;
     display: flex;
-  }
+}
 
-  .full-width .justify-content-center {
+.full-width .justify-content-center {
     display: flex;
     align-self: center;
     width: 100%;
-  }
+}
 
-  .full-width .lead.emoji-picker-container {
+.full-width .lead.emoji-picker-container {
     width: 300px;
     display: block;
-  }
+}
 
-  .full-width .lead.emoji-picker-container input {
+.full-width .lead.emoji-picker-container input {
     width: 100%;
     height: 50px;
-  }
-  .emo{
-      font-family: 'Roboto',sans-serif;
-      background:url(https://media.istockphoto.com/photos/space-background-wiht-stars-stock-image-picture-id1287901429?b=1&k=20&m=1287901429&s=170667a&w=0&h=RH6-KPEq-WYftCxoKnQixr8SOwyHlWr8F8EfloDmTxg=) ;
-      background-size: cover;
-  }
-  .modal-title{
-      font-family: 'Roboto',sans-serif;
-      font-size: medium;
-      text-align: center;
-      color: rgb(0, 0, 0);
-      text-transform:uppercase;
-  }
- /* for nav format */
- .dropdown-menu li {
+}
+
+.emo {
+    font-family: 'Roboto', sans-serif;
+    background: url(https://media.istockphoto.com/photos/space-background-wiht-stars-stock-image-picture-id1287901429?b=1&k=20&m=1287901429&s=170667a&w=0&h=RH6-KPEq-WYftCxoKnQixr8SOwyHlWr8F8EfloDmTxg=);
+    background-size: cover;
+}
+
+.modal-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: medium;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+}
+
+/* for nav format */
+.dropdown-menu li {
     position: relative;
-  }
-  .dropdown-menu .dropdown-submenu {
+}
+
+.dropdown-menu .dropdown-submenu {
     display: none;
     position: absolute;
     left: 100%;
     top: -7px;
-  }
-  .dropdown-menu .dropdown-submenu-left {
+}
+
+.dropdown-menu .dropdown-submenu-left {
     right: 100%;
     left: auto;
-    
-  }
-  .dropdown-menu > li:hover > .dropdown-submenu {
-    display:block;
-    left:160px;
+
+}
+
+.dropdown-menu>li:hover>.dropdown-submenu {
+    display: block;
+    left: 160px;
     top: -1px;
-   
-  }
+
+}
